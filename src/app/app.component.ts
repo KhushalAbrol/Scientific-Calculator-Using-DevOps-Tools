@@ -56,4 +56,9 @@ export class AppComponent {
     return this.factorial(n - 1) * n;
   }
 
+  root() {
+    this.value1 = Math.sqrt(this.value1);
+    this.performed = true;
+  }
+
 }

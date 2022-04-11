@@ -35,4 +35,9 @@ export class AppComponent {
     this.performed = true;
   }
 
+  cancel() {
+    this.value1 = 0;
+    this.value2 = 0;
+  }
+
 }

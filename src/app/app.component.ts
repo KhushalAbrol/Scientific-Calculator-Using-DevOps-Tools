@@ -25,4 +25,14 @@ export class AppComponent {
     this.value1 = (this.value1 * 10) + x;
   }
 
+  calculate() {
+    if (this.expOprn) {
+      this.value1 = Math.pow(this.value2, this.value1);
+    } else {
+      this.value1 = 0;
+    }
+    this.expOprn = false;
+    this.performed = true;
+  }
+
 }

@@ -45,4 +45,15 @@ export class AppComponent {
     this.expOprn = true;
   }
 
+  fact() {
+    this.value1 = this.factorial(this.value1);
+    this.performed = true;
+  }
+
+  factorial(n: number): any {
+    if (n == 0 || n == 1)
+      return 1;
+    return this.factorial(n - 1) * n;
+  }
+
 }

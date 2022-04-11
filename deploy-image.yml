@@ -1,0 +1,9 @@
+---
+- name: Pull docker image of ToDoList
+  hosts: all
+  tasks:
+    - name: Pull devops image
+      docker_image:
+        name: khushalabrol2000/scientific_calculator
+        source: pull
+...

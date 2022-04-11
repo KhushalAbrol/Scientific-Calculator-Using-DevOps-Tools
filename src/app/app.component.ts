@@ -40,4 +40,9 @@ export class AppComponent {
     this.value2 = 0;
   }
 
+  exp() {
+    this.value2 = this.value1
+    this.expOprn = true;
+  }
+
 }

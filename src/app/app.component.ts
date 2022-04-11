@@ -1,3 +1,4 @@
+import { ThisReceiver } from '@angular/compiler';
 import { Component } from '@angular/core';
 
 @Component({
@@ -6,12 +7,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Scientific-Calculator-Using-DevOps-Tools';
+  title = 'scientific_calculator';
   value1: number = 0;
   value2: number = 0;
-  performed: boolean = false;
+  operation: String = "";
   expOprn: boolean = false;
-
+  performed: boolean = false;
 
   add(x: number) {
     if(this.performed){
@@ -61,4 +62,8 @@ export class AppComponent {
     this.performed = true;
   }
 
+  ln() {
+    this.value1 = Math.log(this.value1);
+    this.performed = true;
+  }
 }

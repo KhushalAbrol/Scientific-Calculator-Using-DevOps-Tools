@@ -13,7 +13,7 @@
       
     - name: Pull devops image
       docker_image:
-        name: khushalabrol2000/scientific_calculator
+        name: khushalabrol2000/scientific_calculator:latest
         source: pull
         
     - name: deploy calculator docker container

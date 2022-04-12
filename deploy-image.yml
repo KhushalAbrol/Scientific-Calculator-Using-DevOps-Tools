@@ -3,10 +3,10 @@
   hosts: all
   tasks:
     - name: Stop Docker Container
-    shell: docker stop scientific_calculator
+      shell: docker stop scientific_calculator
     
     - name: Remove Docker container
-    shell: docker rm -f scientific_calculator
+      shell: docker rm -f scientific_calculator
     
     - name: Remove Docker Image
       shell: docker image rm -f khushalabrol2000/scientific_calculator:latest

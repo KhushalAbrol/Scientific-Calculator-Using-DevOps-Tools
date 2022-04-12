@@ -2,14 +2,22 @@
 - name: Pull docker image of ToDoList
   hosts: all
   tasks:
+  
+    - name: Get container status
+      shell: docker container inspect -f '{{.State.Running}}' scientific_calculator
+      register: status
+      
     - name: Stop Docker Container
       shell: docker stop scientific_calculator
+      when: status.stdout != "true"
     
     - name: Remove Docker container
       shell: docker rm -f scientific_calculator
+      when: status.stdout != "true"
     
     - name: Remove Docker Image
       shell: docker image rm -f khushalabrol2000/scientific_calculator:latest
+      when: status.stdout != "true"
       
     - name: Pull devops image
       docker_image:

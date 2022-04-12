@@ -8,6 +8,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'scientific_calculator';
+  value: string = "0";
   value1: number = 0;
   value2: number = 0;
   operation: String = "";
@@ -29,8 +30,10 @@ export class AppComponent {
   calculate() {
     if (this.expOprn) {
       this.value1 = Math.pow(this.value2, this.value1);
+      this.value = this.value1.toString();
     } else {
       this.value1 = 0;
+      this.value = this.value1.toString();
     }
     this.expOprn = false;
     this.performed = true;
@@ -39,6 +42,7 @@ export class AppComponent {
   cancel() {
     this.value1 = 0;
     this.value2 = 0;
+    this.value = this.value1.toString();
   }
 
   exp() {
@@ -47,7 +51,14 @@ export class AppComponent {
   }
 
   fact() {
-    this.value1 = this.factorial(this.value1);
+    if(Number.isInteger(this.value1)){
+      this.value1 = this.factorial(this.value1);
+    }else if(this.value1>800){
+      this.value = "Infinity";
+      this.value1 = 0;
+    }else {
+      this.value = "Invalid Number";  
+    }
     this.performed = true;
   }
 
@@ -60,10 +71,12 @@ export class AppComponent {
   root() {
     this.value1 = Math.sqrt(this.value1);
     this.performed = true;
+    this.value = this.value1.toString();
   }
 
   ln() {
     this.value1 = Math.log(this.value1);
     this.performed = true;
+    this.value = this.value1.toString();
   }
 }

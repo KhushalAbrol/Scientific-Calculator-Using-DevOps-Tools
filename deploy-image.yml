@@ -1,4 +1,4 @@
-- name: Pull docker image of ToDoList
+- name: Pull docker image of Scientific Calculator
   hosts: all
   tasks:
     - name: Pull devops image

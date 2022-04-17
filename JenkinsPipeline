@@ -1,0 +1,69 @@
+pipeline {
+    environment {
+        registry = "khushalabrol2000/scientific_calculator"
+        registryCredential = 'Docker-cred'
+        dockerImage = ''
+    }
+    agent any
+
+    stages {
+         stage('Git Clone') {
+            steps {
+                // Get some code from a GitHub repository
+                git url: 'https://github.com/KhushalAbrol/Scientific-Calculator-Using-DevOps-Tools.git', branch: 'main',
+                 credentialsId: 'git-cred'
+            }
+        }
+        
+        stage('Package application') {
+            steps {
+                sh "npm install"
+                sh "ng lint"
+                
+            }
+        }
+        
+        stage('Build'){
+            steps{
+                sh "ng build --prod"
+            }
+        }
+        
+        stage('Testing'){
+            steps{
+                sh 'ng test --sourceMap=false --browsers=ChromeHeadless --watch=false --progress=false'
+            } 
+        }
+        
+        stage('Build Docker Image') {
+            steps{
+                script {
+                    dockerImage = docker.build registry + ":latest"
+                }
+            }
+        }        
+        
+        stage('Push Docker Image to Dockerhub') {
+            steps{
+                script {
+                    
+                    docker.withRegistry( '', registryCredential ) {
+                    dockerImage.push()
+                    }
+                }
+            }
+        }
+        
+        stage('Deployment using Ansible'){
+            steps{
+                ansiblePlaybook becomeUser: null, colorized: true, disableHostKeyChecking: true, 
+                installation: 'ansible', inventory: 'inventory', playbook: 'deploy-image.yml', sudoUser: null
+            }
+        }
+    }
+}
+
+
+
+
+

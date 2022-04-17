@@ -18,6 +18,7 @@ export class AppComponent {
   value2: number = 0;
   operation: String = "";
   expOprn: boolean = false;
+  first: boolean = false;
   performed: boolean = false;
 
   add(x: number) {
@@ -26,7 +27,8 @@ export class AppComponent {
       this.performed = false;
       return;
     }
-    if (this.expOprn) {
+    if (this.expOprn && this.first) {
+      this.first = false;
       this.value1 = 0;
     }
     this.value1 = (this.value1 * 10) + x;''
@@ -56,6 +58,7 @@ export class AppComponent {
   exp() {
     this.value2 = this.value1
     this.expOprn = true;
+    this.first = true;
   }
 
   fact() {

@@ -5,3 +5,9 @@
       docker_image:
         name: khushalabrol2000/scientific_calculator
         source: pull
+    - name: Run Devops Container
+      docker_container: 
+        name: khushalabrol2000/scientific_calculator
+        state: started
+        ports:
+          - "3000:80"

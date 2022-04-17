@@ -1,5 +1,10 @@
 import { ThisReceiver } from '@angular/compiler';
 import { Component } from '@angular/core';
+import { configure, getLogger, Logger } from 'log4js';
+
+// configure("/.calc.log");
+// const logger = getLogger();
+// logger.level = "info";
 
 @Component({
   selector: 'app-root',
@@ -24,7 +29,10 @@ export class AppComponent {
     if (this.expOprn) {
       this.value1 = 0;
     }
-    this.value1 = (this.value1 * 10) + x;
+    this.value1 = (this.value1 * 10) + x;''
+
+    // logger.info("Add called.")
+
   }
 
   calculate() {

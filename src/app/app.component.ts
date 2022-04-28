@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NGXLogger } from 'ngx-logger';
+// import { NGXLogger } from 'ngx-logger';
 
 
 @Component({
@@ -17,7 +17,8 @@ export class AppComponent {
   first: boolean = false;
   performed: boolean = false;
 
-  constructor(private logger: NGXLogger) { }
+//   constructor(private logger: NGXLogger) { }
+  constructor() { }
 
   add(x: number) {
     if(this.performed){
@@ -31,7 +32,7 @@ export class AppComponent {
     }
     this.value1 = (this.value1 * 10) + x;''
 
-    this.logger.info("add() called")
+//     this.logger.info("add() called")
   }
 
   calculate() {
@@ -45,14 +46,14 @@ export class AppComponent {
     this.expOprn = false;
     this.performed = true;
     
-    this.logger.info("calculated() called")
+//     this.logger.info("calculated() called")
   }
 
   cancel() {
     this.value1 = 0;
     this.value2 = 0;
     this.value = this.value1.toString();
-    this.logger.info("cancel() called")
+//     this.logger.info("cancel() called")
 
   }
 
@@ -60,7 +61,7 @@ export class AppComponent {
     this.value2 = this.value1
     this.expOprn = true;
     this.first = true;
-    this.logger.info("exp() called")
+//     this.logger.info("exp() called")
   }
 
   fact() {
@@ -73,7 +74,7 @@ export class AppComponent {
       this.value = "Invalid Number";  
     }
     this.performed = true;
-    this.logger.info("fact() called")
+//     this.logger.info("fact() called")
   }
 
   factorial(n: number): any {
@@ -86,14 +87,14 @@ export class AppComponent {
     this.value1 = Math.sqrt(this.value1);
     this.performed = true;
     this.value = this.value1.toString();
-    this.logger.info("root() called")
+//     this.logger.info("root() called")
   }
 
   ln() {
     this.value1 = Math.log(this.value1);
     this.performed = true;
     this.value = this.value1.toString();
-    this.logger.info("ln() called")
+//     this.logger.info("ln() called")
 
   }
 }
